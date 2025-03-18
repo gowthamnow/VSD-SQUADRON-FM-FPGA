@@ -41,34 +41,22 @@ The project is designed to be synthesized using Yosys and targeted for FPGA boar
 
 ## 🚀 How to Build and Run
 
-1. **Synthesis**
+1. **Synthesis and Place & Route**
 
-   ```bash
-   make synth
-   ```
-
-2. **Place & Route**
-
-   ```bash
+   ```make 
    make pnr
    ```
 
-3. **Generate Bitstream**
+2. **Generate Bitstream**
 
-   ```bash
+   ```make build
    make bit
    ```
 
-4. **Simulation (Optional)**
+3. **Programming FPGA**
 
-   ```bash
-   make sim
-   ```
-
-5. **Programming FPGA**
-
-   ```bash
-   iceprog TOP.bin
+   ```sudo make flash
+    TOP.bin
    ```
 
 ---
