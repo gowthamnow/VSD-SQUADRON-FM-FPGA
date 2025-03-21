@@ -31,7 +31,7 @@ The **VSDSquadron FPGA Mini (FM)** is a compact and cost-effective development b
 
 ---
 
-## Specifications
+## Specifications and Pinouts
 
 - **FPGA Chip:** Lattice UltraPlus ICE40UP5K
   - Logic Cells: 5,280
@@ -51,7 +51,66 @@ The **VSDSquadron FPGA Mini (FM)** is a compact and cost-effective development b
 
 - **Dimensions:** 57mm x 29mm
 
-*For more detailed specifications, refer to the [VSDSquadron FM Datasheet](https://www.vlsisystemdesign.com/wp-content/uploads/2025/01/VSDSquadronFMDatasheet.pdf).*
+| Feature                 | Specification                             |
+|-------------------------|-------------------------------------------|
+| Technology Node         | 40 nm                                     |
+| Logic Cells             | 5,280                                     |
+| Flip-Flops              | 4,960                                     |
+| SRAM Blocks             | 120 Kbits                                 |
+| DSP Blocks              | None                                      |
+| Package Type            | SG48                                      |
+| I/O Pins                | 39                                        |
+| I/O Standards           | LVCMOS, LVDS                              |
+| Max Operating Frequency | 133 MHz                                   |
+| Clock Sources           | Internal oscillator, external clock       |
+| Core Voltage            | 1.2V                                      |
+| I/O Voltage             | 3.3V, 2.5V, 1.8V                          |
+| Operating Temp Range    | -40°C to 85°C                             |
+| Development Tools       | Project IceStorm, Yosys, NextPNR          |
+
+---
+
+## 🗂 FPGA IO Pin Mapping (Partial)
+| FPGA Pin     | Type             | Bank | Notes / Connections                 |
+|------------- |------------------|------|-------------------------------------|
+| IOB 0a       | PIO              | 2    | Pin 46                              |
+| IOB 2a       | DPIO             | 2    | TRUE of IOB 3b - Pin 47             |
+| IOB 3b       | DPIO/GBIN        | 2    | COMP of IOB 2a - Pin 44             |
+| IOB 4a       | DPIO             | 2    | TRUE of IOB 5b - Pin 48             |
+| IOB 5b       | DPIO             | 2    | COMP of IOB 4a - Pin 45             |
+| IOB 6a       | PIO              | 2    | Pin 2                               |
+| IOB 8a       | DPIO             | 2    | TRUE of IOB 9b - Pin 4              |
+| IOB 9b       | DPIO             | 2    | COMP of IOB 8a - Pin 3              |
+| ...          | ...              | ...  | ...                                 |
+| IOB 32a      | SPI SO           | SPI  | Pin 14                              |
+| IOB 33b      | SPI SI           | SPI  | Pin 17                              |
+| IOB 34a      | SPI SCK          | SPI  | Pin 15                              |
+| IOB 35b      | SPI SS           | SPI  | Pin 16                              |
+| RGB0         | LED              | -    | Pin 39                              |
+| RGB1         | LED              | -    | Pin 40                              |
+| RGB2         | LED              | -    | Pin 41                              |
+
+**Note:** Full pin mapping available in the datasheet.
+
+---
+
+## 🟢 Power and Other Signals
+- **VCC (Core Power):** Pins 5, 30
+- **VCCIO (I/O Power):** Pins 1 (VCCIO2), 22 (SPI VCCIO1), 33 (VCCIO0)
+- **GND:** Ground - Paddle and multiple pins
+- **VPP (Programming Power):** Pin 24 (2.5V)
+
+---
+
+## 📌 Additional Features
+- **4MB SPI Flash**
+- **FTDI FT232H USB to SPI**
+- **RGB LED indicators**
+- **Onboard 3.3V and 1.2V Regulators**
+- **32 GPIO accessible for prototyping**
+- **Form Factor:** 57mm x 29mm, Height: Top 8mm, Bottom 1mm
+
+---
 
 ---
 # ⚙️ VSDSquadron FM FPGA - Software Installation Guide
@@ -151,13 +210,6 @@ sudo make flash
 
 ---
 
-## 📚 Useful Links:
-- **VirtualBox:** https://www.virtualbox.org/wiki/Downloads
-- **FPGA Datasheet:** https://www.vlsisystemdesign.com/wp-content/uploads/2024/12/iCE40_UltraPlus_Sheet.pdf
-- **Help and Support:** vsd@vlsisystemdesign.com
-- **VSD Slack:** https://vsdsquadron.slack.com/
-
----
 ## Command Breakdown
 
 ### 1️⃣ `make`
@@ -266,15 +318,6 @@ sudo make flash # Flash the bitstream onto the FPGA board
 
 ---
 
-## Documentation and Support
-
-- **Datasheet:** [VSDSquadron FM Datasheet](https://www.vlsisystemdesign.com/wp-content/uploads/2025/01/VSDSquadronFMDatasheet.pdf)
-- **Online Support:** VSD Slack Channel
-- **Contact:** vsd@vlsisystemdesign.com
-
----
-
-## ✨ Happy FPGA Designing! ✨
 
 
 
@@ -405,3 +448,14 @@ Feel free to fork, modify, and contribute to the repository!
 - [Yosys Synthesis Suite](https://yosyshq.net/yosys/)
 - [NextPNR Documentation](https://github.com/YosysHQ/nextpnr)
 - [Project IceStorm](https://clifford.at/icestorm/)
+
+
+
+
+## 📚 Useful Links:
+- **VirtualBox:** https://www.virtualbox.org/wiki/Downloads
+- **FPGA Datasheet:** https://www.vlsisystemdesign.com/wp-content/uploads/2024/12/iCE40_UltraPlus_Sheet.pdf
+- **Help and Support:** vsd@vlsisystemdesign.com
+- **VSD Slack:** https://vsdsquadron.slack.com/
+
+---
