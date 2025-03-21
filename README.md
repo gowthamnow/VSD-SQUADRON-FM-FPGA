@@ -31,6 +31,7 @@ The **VSDSquadron FPGA Mini (FM)** is a compact and cost-effective development b
 
 ![VSD SQUADRON FPGA](VSD.jpg)
 ![VSD SQUADRON FPGA](VSDSquadron-FPGA-Mini-FM-board-Block-Diagram.png)
+![VSD SQUADRON FPGA](VSDSquadron-FPGA-Mini-FM-board-Block-Diagram.png)
 ---
 
 ## Specifications and Pinouts
