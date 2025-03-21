@@ -8,11 +8,13 @@ This document provides an overview of the **VSDSquadron FPGA Mini (FM)** board a
 ## 📋 Table of Contents
 
 - [Board Overview](#board-overview)
+- [Software Installation](#Software-Installaion).
 - [Specifications](#specifications)
 - [Command Breakdown](#command-breakdown)
   - [`make`](#1️⃣-make)
   - [`make build`](#2️⃣-make-build)
   - [`sudo make flash`](#3️⃣-sudo-make-flash)
+  - 
 - [Example Makefile Snippet](#example-makefile-snippet)
 - [Full Workflow Example](#full-workflow-example)
 - [Notes](#notes)
@@ -52,7 +54,110 @@ The **VSDSquadron FPGA Mini (FM)** is a compact and cost-effective development b
 *For more detailed specifications, refer to the [VSDSquadron FM Datasheet](https://www.vlsisystemdesign.com/wp-content/uploads/2025/01/VSDSquadronFMDatasheet.pdf).*
 
 ---
+# ⚙️ VSDSquadron FM FPGA - Software Installation Guide
 
+This guide helps you set up the **VSDSquadron FPGA Mini (FM)** board on your system and run your first project.
+
+---
+
+## 📥 Required Software and Resources
+- **VirtualBox** (Download: https://www.virtualbox.org/wiki/Downloads)
+- **VSDSquadron FPGA Mini (FM) Software Package**
+  - Download Link: https://forgefunder.com/~kunal/vsdsquadron_fpga_mini.zip
+- Minimum **100GB free disk space** on `C:` or `D:` drive
+- **4GB RAM** and **4 CPU cores** recommended
+- **VDI file** provided inside the software package
+
+---
+
+## 💻 Installation Instructions (Windows Users)
+
+### 1️⃣ Check Disk Space
+Ensure you have at least **100GB free**.
+
+### 2️⃣ Download and Extract Software
+- Download the **VSDSquadron software zip** package.
+- Extract it to a known location.
+
+### 3️⃣ Install VirtualBox
+- Download and install **Oracle VirtualBox**.
+
+### 4️⃣ Create a Virtual Machine
+- Open VirtualBox → **New** → Enter details:
+  - Name: *VSDSquadron_FPGA*
+  - Type: *Linux*
+  - Version: *Xubuntu (64-bit)*
+- Allocate:
+  - **RAM:** 4096 MB
+  - **CPU:** 4 cores
+
+### 5️⃣ Select the VDI File
+- In hard disk settings, select: **Use an existing virtual hard disk file**
+- Browse to the extracted **.VDI file**
+
+### 6️⃣ Start the Virtual Machine
+- Boot the VM and login with:
+  - **Username:** vsdiat
+  - **Password:** vsdiat
+
+---
+
+## 📂 Running the Example Project (Blink LED)
+
+### 1️⃣ Open Terminal in VM
+- Right-click on desktop → Open Terminal
+
+### 2️⃣ Navigate to Project Folder
+```bash
+cd VSDSquadron_FM
+cd blink_led
+```
+
+### 3️⃣ Connect the Board to VM
+- **Connect FPGA board via USB**
+- In VirtualBox → **Devices → USB → FTDI Single RS232-HS**
+- Verify connection:
+```bash
+lsusb
+```
+- Look for **"Future Technology Devices International"**
+
+---
+
+## 🛠 Programming the Board
+
+### Clean previous builds:
+```bash
+make clean
+```
+
+### Build binaries:
+```bash
+make build
+```
+
+### Flash to FPGA:
+```bash
+sudo make flash
+```
+
+✅ **If successful:** RGB LEDs on the board will blink.
+
+---
+
+## 📝 Troubleshooting:
+- If flashing fails, reconnect the board and select **Devices → USB → FTDI Single RS232-HS** again.
+- Retry `sudo make flash`.
+
+---
+
+## 📚 Useful Links:
+- **VirtualBox:** https://www.virtualbox.org/wiki/Downloads
+- **FPGA Datasheet:** https://www.vlsisystemdesign.com/wp-content/uploads/2024/12/iCE40_UltraPlus_Sheet.pdf
+- **Help and Support:** vsd@vlsisystemdesign.com
+- **VSD Slack:** https://vsdsquadron.slack.com/
+
+---
 ## Command Breakdown
 
 ### 1️⃣ `make`
@@ -170,6 +275,11 @@ sudo make flash # Flash the bitstream onto the FPGA board
 ---
 
 ## ✨ Happy FPGA Designing! ✨
+
+
+
+
+
 
 
 
