@@ -1,3 +1,184 @@
+
+# 🚀 VSDSquadron FPGA Mini (FM) - FSM FPGA Design Flow
+
+This document provides an overview of the **VSDSquadron FPGA Mini (FM)** board and details the usage of essential commands in the FSM (Finite State Machine) FPGA design flow.
+
+---
+
+## 📋 Table of Contents
+
+- [Board Overview](#board-overview)
+- [Specifications](#specifications)
+- [Command Breakdown](#command-breakdown)
+  - [`make`](#1️⃣-make)
+  - [`make build`](#2️⃣-make-build)
+  - [`sudo make flash`](#3️⃣-sudo-make-flash)
+- [Example Makefile Snippet](#example-makefile-snippet)
+- [Full Workflow Example](#full-workflow-example)
+- [Notes](#notes)
+- [Tools Typically Used](#tools-typically-used)
+- [Summary](#summary)
+- [Getting Started](#getting-started)
+- [Documentation and Support](#documentation-and-support)
+
+---
+
+## Board Overview
+
+The **VSDSquadron FPGA Mini (FM)** is a compact and cost-effective development board designed for FPGA prototyping and embedded system projects. It offers a seamless hardware development experience with an integrated programmer, versatile GPIO access, and onboard memory, making it ideal for students, hobbyists, and developers exploring FPGA-based designs.
+
+---
+
+## Specifications
+
+- **FPGA Chip:** Lattice UltraPlus ICE40UP5K
+  - Logic Cells: 5,280
+  - SPRAM: 1Mb
+  - DPRAM: 120Kb
+  - Multipliers: 8
+
+- **Connectivity:** FTDI FT232H USB-to-SPI for programming and communication
+
+- **GPIO:** 32 accessible FPGA GPIOs
+
+- **Memory:** 4MB SPI flash for data storage and configuration
+
+- **LED Indicators:** RGB LED for status indication
+
+- **Power Regulation:** Onboard 3.3V and 1.2V regulators with external supply option
+
+- **Dimensions:** 57mm x 29mm
+
+*For more detailed specifications, refer to the [VSDSquadron FM Datasheet](https://www.vlsisystemdesign.com/wp-content/uploads/2025/01/VSDSquadronFMDatasheet.pdf).*
+
+---
+
+## Command Breakdown
+
+### 1️⃣ `make`
+
+**Purpose:**  
+Compiles the Verilog design files.
+
+**What Happens:**  
+- Runs synthesis and simulation tasks.
+- Generates intermediate files like `.json`, `.vvp`, or `.bin`.
+
+**Usage:**
+```bash
+make
+```
+
+---
+
+### 2️⃣ `make build`
+
+**Purpose:**  
+Builds the design and prepares the FPGA bitstream.
+
+**What Happens:**  
+- Maps the synthesized design to FPGA constraints.
+- Generates the final FPGA-ready binary or bitstream (e.g., `top.bin` or `top.bit`).
+
+**Usage:**
+```bash
+make build
+```
+
+---
+
+### 3️⃣ `sudo make flash`
+
+**Purpose:**  
+Flashes (uploads) the generated bitstream or binary to the FPGA hardware.
+
+**Why `sudo`?**  
+- Flashing often requires USB/JTAG access, needing root permissions.
+
+**Usage:**
+```bash
+sudo make flash
+```
+
+---
+
+## Example Makefile Snippet
+
+```makefile
+build:
+    yosys -p "synth_ice40 -top top -json top.json" top.v
+    nextpnr-ice40 --hx8k --json top.json --asc top.asc
+    icepack top.asc top.bin
+
+flash:
+    iceprog top.bin
+```
+
+---
+
+## Full Workflow Example
+
+```bash
+make            # Synthesize and simulate the Verilog FSM
+make build      # Generate bitstream for FPGA
+sudo make flash # Flash the bitstream onto the FPGA board
+```
+
+---
+
+## Notes
+
+- Toolchains and flashing commands might vary based on your FPGA board (e.g., iCEBreaker, Arty).
+- Replace `iceprog` with `openFPGALoader` or `vivado` for other FPGA platforms.
+- Always check hardware permissions; `sudo` may be required for flashing.
+
+---
+
+## Tools Typically Used
+
+- **Yosys:** Synthesis
+- **NextPNR:** Place & Route
+- **icepack / Vivado / openFPGALoader:** Bitstream generation
+- **iceprog / openFPGALoader:** Flashing to FPGA hardware
+
+---
+
+## Summary
+
+| Command           | Description                             |
+|-------------------|-----------------------------------------|
+| `make`            | Compile and synthesize Verilog code     |
+| `make build`      | Generate FPGA-ready bitstream           |
+| `sudo make flash` | Upload bitstream to the FPGA hardware   |
+
+---
+
+## Getting Started
+
+- **Software Tools Required:** Project Icestorm, Yosys, NextPNR
+- **Programming:** Onboard FTDI FT232H enables USB-based programming.
+- **First Project:** A preloaded "blink LED" example is included for quick testing.
+
+---
+
+## Documentation and Support
+
+- **Datasheet:** [VSDSquadron FM Datasheet](https://www.vlsisystemdesign.com/wp-content/uploads/2025/01/VSDSquadronFMDatasheet.pdf)
+- **Online Support:** VSD Slack Channel
+- **Contact:** vsd@vlsisystemdesign.com
+
+---
+
+## ✨ Happy FPGA Designing! ✨
+
+
+
+
+
+
+
+
+
 # FPGA Projects Repository - UART and 8-bit Counter
 
 ## 📂 Repository Overview
@@ -32,73 +213,7 @@ This repository contains two FPGA-based digital design projects developed using 
 - **Icarus Verilog / ModelSim** - Simulation
 - **Target FPGA:** Lattice ICE40 or compatible board
 
----
-VSD Squadron - FSM FPGA Design Flow 🚀
-This document explains the usage of the following commands commonly used in the VSD Squadron FSM (Finite State Machine) FPGA Design flow:
 
-- make
-- make build
-- sudo make flash
-
-These commands automate synthesis, bitstream generation, and FPGA programming steps using tools like Yosys, NextPNR, and iceprog (or similar FPGA loaders).
-🔨 Command Breakdown
-1️⃣ make
-Purpose:
-Compiles the Verilog design files.
-
-What Happens:
-- Runs synthesis and simulation tasks.
-- Generates intermediate files like .json, .vvp, or .bin.
-
-Example Usage:
-make
-2️⃣ make build
-Purpose:
-Specifically builds the design and prepares the FPGA bitstream.
-
-What Happens:
-- Maps the synthesized design to FPGA constraints.
-- Generates the final FPGA-ready binary or bitstream (top.bin or top.bit).
-
-Example Usage:
-make build
-3️⃣ sudo make flash
-Purpose:
-Flashes (uploads) the generated bitstream or binary to the FPGA hardware.
-
-Why sudo?
-- Flashing typically requires USB or JTAG access, needing root permissions.
-
-Example Usage:
-sudo make flash
-✅ Example Makefile Target Snippet
-build:
-    yosys -p "synth_ice40 -top top -json top.json" top.v
-    nextpnr-ice40 --hx8k --json top.json --asc top.asc
-    icepack top.asc top.bin
-
-flash:
-    iceprog top.bin
-Full Flow Example:
-make           # Synthesize and simulate the Verilog FSM
-make build     # Generate bitstream for FPGA
-sudo make flash  # Flash the bitstream onto the FPGA board
-🧠 Notes:
-- The exact tools and commands may vary based on the FPGA board (iCEBreaker, Arty, etc.).
-- Replace iceprog with openFPGALoader or vivado for boards like Lattice or Xilinx.
-- Ensure your user has the required permissions or use sudo for flashing.
-🔗 Tools Typically Used:
-- Yosys: Synthesis
-- NextPNR: Place & Route
-- icepack / Vivado / openFPGALoader: Bitstream generation
-- iceprog / openFPGALoader: Flashing to FPGA
-📌 Summary:
-Command	Description
-make	Compile and synthesize Verilog code
-make build	Generate FPGA-ready bitstream
-sudo make flash	Upload bitstream to the FPGA hardware
-
-Happy FPGA Designing! ✨
 
 ## 🚀 General Build Instructions
 ### For UART Project:
