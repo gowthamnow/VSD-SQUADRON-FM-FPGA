@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # 🚀 VSDSquadron FPGA Mini (FM) - FSM FPGA Design Flow
 
@@ -322,3 +323,6 @@ sudo make flash # Flash the bitstream onto the FPGA board
 
 ---
 
+=======
+# VSD-SQUADRON-FM-FPGA
+>>>>>>> 81a4142 (Initial commit)
