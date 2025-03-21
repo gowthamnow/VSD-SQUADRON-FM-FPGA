@@ -30,7 +30,6 @@ This document provides an overview of the **VSDSquadron FPGA Mini (FM)** board a
 The **VSDSquadron FPGA Mini (FM)** is a compact and cost-effective development board designed for FPGA prototyping and embedded system projects. It offers a seamless hardware development experience with an integrated programmer, versatile GPIO access, and onboard memory, making it ideal for students, hobbyists, and developers exploring FPGA-based designs.
 
 ![VSD SQUADRON FPGA](VSD.jpg)
-![VSD SQUADRON FPGA](VSDSquadron-FPGA-Mini-FM-board-Block-Diagram.png)
 ---
 
 ## Specifications and Pinouts
@@ -261,7 +260,7 @@ Flashes (uploads) the generated bitstream or binary to the FPGA hardware.
 ```bash
 sudo make flash
 ```
-
+![VSD SQUADRON FPGA](VSDSquadron-FPGA-Mini-FM-board-Block-Diagram.png)
 ---
 
 ## Example Makefile Snippet
