@@ -1,0 +1,15 @@
+set_io Clk 20               # 12 MHz Clock Pin (Hardware Clock)
+set_io Rst_n 23             # Reset Pin (Active-low)
+
+set_io Tx 14                # UART Transmitter Pin
+set_io Rx 15                # UART Receiver Pin
+
+# External LEDs (Connecting to RxData)
+set_io RxData[0] 2         # Red LED
+set_io RxData[1] 3         # Green LED
+set_io RxData[2] 4         # Blue LED
+set_io RxData[3] 6         # LED 1
+set_io RxData[4] 9         # LED 2
+set_io RxData[5] 10         # LED 3
+set_io RxData[6] 11         # LED 4
+set_io RxData[7] 12         # LED 5

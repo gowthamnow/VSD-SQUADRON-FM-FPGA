@@ -1,0 +1,56 @@
+
+icetime topological timing analysis report
+==========================================
+
+Report for critical path:
+-------------------------
+
+        lc40_10_3_1 (LogicCell40) [clk] -> lcout: 1.491 ns
+     1.491 ns net_37703 (I_RS232RX.Bit[0])
+        t202 (LocalMux) I -> O: 1.099 ns
+        inmux_10_3_41575_41625 (InMux) I -> O: 0.662 ns
+        lc40_10_3_3 (LogicCell40) in0 -> lcout: 1.285 ns
+     4.537 ns net_37705 (I_RS232RX.Bit_SB_DFFNESR_Q_4_D[0])
+        t204 (LocalMux) I -> O: 1.099 ns
+        inmux_9_2_37639_37654 (InMux) I -> O: 0.662 ns
+        lc40_9_2_0 (LogicCell40) in1 -> carryout: 0.675 ns
+     6.974 ns t33
+        lc40_9_2_1 (LogicCell40) carryin -> carryout: 0.278 ns
+     7.252 ns t34
+        lc40_9_2_2 (LogicCell40) carryin -> carryout: 0.278 ns
+     7.530 ns t35
+        lc40_9_2_3 (LogicCell40) carryin -> carryout: 0.278 ns
+     7.808 ns t36
+        lc40_9_2_4 (LogicCell40) carryin -> carryout: 0.278 ns
+     8.086 ns net_37676 (Rx_SB_LUT4_I0_O_SB_LUT4_O_I3_SB_LUT4_O_I3[1])
+        inmux_9_2_37676_37686 (InMux) I -> O: 0.662 ns
+        lc40_9_2_5 (LogicCell40) in3 -> lcout: 0.874 ns
+     9.623 ns net_33717 (Rx_SB_LUT4_I0_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I2_O[2])
+        t159 (LocalMux) I -> O: 1.099 ns
+        inmux_10_2_41456_41528 (InMux) I -> O: 0.662 ns
+        t54 (CascadeMux) I -> O: 0.000 ns
+        lc40_10_2_7 (LogicCell40) in2 -> lcout: 1.205 ns
+    12.590 ns net_37550 (I_RS232RX.Bit_SB_DFFNESR_Q_E_SB_LUT4_O_I3[1])
+        t191 (LocalMux) I -> O: 1.099 ns
+        inmux_9_2_37651_37698 (InMux) I -> O: 0.662 ns
+        lc40_9_2_7 (LogicCell40) in3 -> lcout: 0.874 ns
+    15.225 ns net_33719 (I_RS232RX.counter_SB_DFFNESR_Q_R)
+        odrv_9_2_33719_26806 (Odrv12) I -> O: 1.232 ns
+        t160 (LocalMux) I -> O: 1.099 ns
+        inmux_8_2_33802_33870 (SRMux) I -> O: 0.636 ns
+    18.192 ns net_33870 (I_RS232RX.counter_SB_DFFNESR_Q_R)
+        lc40_8_2_6 (LogicCell40) sr [setup]: 0.384 ns
+    18.576 ns net_29887 (I_RS232RX.counter[0])
+
+Resolvable net names on path:
+     1.491 ns ..  3.252 ns I_RS232RX.Bit[0]
+     4.537 ns ..  6.298 ns I_RS232RX.Bit_SB_DFFNESR_Q_4_D[0]
+     8.086 ns ..  8.749 ns Rx_SB_LUT4_I0_O_SB_LUT4_O_I3_SB_LUT4_O_I3[1]
+     9.623 ns .. 11.384 ns Rx_SB_LUT4_I0_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I2_O[2]
+    12.590 ns .. 14.351 ns I_RS232RX.Bit_SB_DFFNESR_Q_E_SB_LUT4_O_I3[1]
+    15.225 ns .. 18.192 ns I_RS232RX.counter_SB_DFFNESR_Q_R
+                  lcout -> I_RS232RX.counter[0]
+
+Total number of logic levels: 10
+Total path delay: 18.58 ns (53.83 MHz)
+

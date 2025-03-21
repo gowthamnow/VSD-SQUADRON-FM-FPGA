@@ -1,0 +1,10 @@
+set_io q[0] 2       # LED Red
+set_io q[1] 3      # LED Green
+set_io q[2] 4       # LED Blue
+set_io q[3] 6       # Unused GPIO
+set_io q[4] 9      # Unused GPIO
+set_io q[5] 10       # Unused GPIO
+set_io q[6] 11       # Unused GPIO
+set_io q[7] 12       # Unused GPIO
+set_io hw_clk 20     # 12 MHz Clock
+set_io rst 21        # Reset Button (Active Low)
