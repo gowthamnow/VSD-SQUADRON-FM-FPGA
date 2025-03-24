@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# VSD-SQUADRON-FM-FPGA
-=======
-<<<<<<< HEAD
-
 # 🚀 VSDSquadron FPGA Mini (FM) - FSM FPGA Design Flow
 
 This document provides an overview of the **VSDSquadron FPGA Mini (FM)** board and details the usage of essential commands in the FSM (Finite State Machine) FPGA design flow.
@@ -324,9 +319,3 @@ sudo make flash # Flash the bitstream onto the FPGA board
 - **Programming:** Onboard FTDI FT232H enables USB-based programming.
 - **First Project:** A preloaded "blink LED" example is included for quick testing.
 
----
-
-=======
-# VSD-SQUADRON-FM-FPGA
->>>>>>> 81a4142 (Initial commit)
->>>>>>> recovery-branch
