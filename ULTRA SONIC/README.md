@@ -46,10 +46,10 @@ Distance (cm) = (Clock Count * 34300) / (2 * 12000000)
 ## 4. Design Schematics
 
 ### 4.1 Circuit Diagram
-🖼️ *[Insert updated Proteus/FPGA schematic here]*
+🖼️
 
 ### 4.2 Block Diagram
-🖼️ *[Insert updated block diagram image]*
+🖼️ 
 
 ---
 
